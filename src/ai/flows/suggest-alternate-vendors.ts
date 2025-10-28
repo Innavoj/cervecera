@@ -28,17 +28,19 @@ export async function suggestAlternateVendors(input: SuggestAlternateVendorsInpu
   return suggestAlternateVendorsFlow(input);
 }
 
-const findAlternateVendor = ai.defineTool({
-  name: 'findAlternateVendor',
-  description: 'Searches the web for alternate vendors of a specific ingredient.',
-  inputSchema: z.object({
-    ingredientName: z.string().describe('The name of the ingredient to find vendors for.'),
-  }),
-  outputSchema: z.object({
-    vendorName: z.string().describe('The name of the alternate vendor.'),
-    vendorContact: z.string().describe('The contact information for the alternate vendor.'),
-    vendorWebsite: z.string().describe('The website of the alternate vendor.'),
-  }),
+const findAlternateVendor = ai.defineTool(
+  {
+    name: 'findAlternateVendor',
+    description: 'Searches the web for alternate vendors of a specific ingredient.',
+    inputSchema: z.object({
+      ingredientName: z.string().describe('The name of the ingredient to find vendors for.'),
+    }),
+    outputSchema: z.object({
+      vendorName: z.string().describe('The name of the alternate vendor.'),
+      vendorContact: z.string().describe('The contact information for the alternate vendor.'),
+      vendorWebsite: z.string().describe('The website of the alternate vendor.'),
+    }),
+  },
   async (input) => {
     // Placeholder implementation for searching the web and finding vendor information.
     // In a real application, this would use a search engine or web scraping library.
@@ -48,8 +50,8 @@ const findAlternateVendor = ai.defineTool({
       vendorContact: 'contact@example.com',
       vendorWebsite: 'https://example.com',
     };
-  },
-});
+  }
+);
 
 const prompt = ai.definePrompt({
   name: 'suggestAlternateVendorsPrompt',
