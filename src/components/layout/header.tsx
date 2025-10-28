@@ -4,13 +4,13 @@ import { usePathname } from 'next/navigation';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 
 const pageTitles: { [key: string]: string } = {
-  '/dashboard': 'Dashboard',
-  '/dashboard/inventory': 'Inventory',
-  '/dashboard/recipes': 'Recipes',
-  '/dashboard/production': 'Production',
-  '/dashboard/sales': 'Sales',
-  '/dashboard/suppliers': 'Suppliers',
-  '/dashboard/reports': 'Reports',
+  '/dashboard': 'Tablero',
+  '/dashboard/inventory': 'Inventario',
+  '/dashboard/recipes': 'Recetas',
+  '/dashboard/production': 'Producción',
+  '/dashboard/sales': 'Ventas',
+  '/dashboard/suppliers': 'Proveedores',
+  '/dashboard/reports': 'Informes',
 };
 
 export function Header() {

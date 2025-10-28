@@ -34,13 +34,13 @@ import {
 import { Header } from '@/components/layout/header';
 
 const menuItems = [
-  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/dashboard/inventory', label: 'Inventory', icon: Boxes },
-  { href: '/dashboard/recipes', label: 'Recipes', icon: NotebookText },
-  { href: '/dashboard/production', label: 'Production', icon: Factory },
-  { href: '/dashboard/sales', label: 'Sales', icon: TrendingUp },
-  { href: '/dashboard/suppliers', label: 'Suppliers', icon: Truck },
-  { href: '/dashboard/reports', label: 'Reports', icon: FilePieChart },
+  { href: '/dashboard', label: 'Tablero', icon: LayoutDashboard },
+  { href: '/dashboard/inventory', label: 'Inventario', icon: Boxes },
+  { href: '/dashboard/recipes', label: 'Recetas', icon: NotebookText },
+  { href: '/dashboard/production', label: 'Producción', icon: Factory },
+  { href: '/dashboard/sales', label: 'Ventas', icon: TrendingUp },
+  { href: '/dashboard/suppliers', label: 'Proveedores', icon: Truck },
+  { href: '/dashboard/reports', label: 'Informes', icon: FilePieChart },
 ];
 
 export default function DashboardLayout({
@@ -80,23 +80,23 @@ export default function DashboardLayout({
                   <AvatarFallback>A</AvatarFallback>
                 </Avatar>
                 <div className="group-data-[collapsible=icon]:hidden">
-                  <p className="text-sm font-medium">Brewmaster</p>
+                  <p className="text-sm font-medium">Maestro Cervecero</p>
                   <p className="text-xs text-muted-foreground">admin@brewcentral.com</p>
                 </div>
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent side="right" align="start">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <User className="mr-2 h-4 w-4" />
-                <span>Profile</span>
+                <span>Perfil</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
                 <Link href="/">
                   <LogOut className="mr-2 h-4 w-4" />
-                  Log out
+                  Cerrar sesión
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>

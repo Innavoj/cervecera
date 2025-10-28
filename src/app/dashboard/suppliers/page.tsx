@@ -27,7 +27,7 @@ import {
 import { Loader2 } from "lucide-react";
 
 const lowStockIngredients = inventory.filter(
-  (item) => item.category === 'Raw Material' && item.quantity < item.reorderLevel
+  (item) => item.category === 'Materia Prima' && item.quantity < item.reorderLevel
 );
 
 export default function SuppliersPage() {
@@ -41,11 +41,11 @@ export default function SuppliersPage() {
       const result = await suggestAlternateVendors({ ingredientName });
       setVendorSuggestion(result);
     } catch (error) {
-      console.error("Error finding alternate vendors:", error);
+      console.error("Error al encontrar proveedores alternativos:", error);
       toast({
         variant: "destructive",
         title: "Error",
-        description: "Could not find alternate vendors at this time.",
+        description: "No se pudieron encontrar proveedores alternativos en este momento.",
       });
     } finally {
       setLoadingIngredient(null);
@@ -56,17 +56,17 @@ export default function SuppliersPage() {
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline">Supplier List</CardTitle>
-          <CardDescription>Your primary points of contact for supplies.</CardDescription>
+          <CardTitle className="font-headline">Lista de Proveedores</CardTitle>
+          <CardDescription>Tus principales contactos para suministros.</CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Supplier</TableHead>
-                <TableHead>Contact Person</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Phone</TableHead>
+                <TableHead>Proveedor</TableHead>
+                <TableHead>Persona de Contacto</TableHead>
+                <TableHead>Correo Electrónico</TableHead>
+                <TableHead>Teléfono</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -86,16 +86,16 @@ export default function SuppliersPage() {
       {lowStockIngredients.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle className="font-headline">Low Stock Ingredients</CardTitle>
-            <CardDescription>Find alternate vendors for ingredients running low.</CardDescription>
+            <CardTitle className="font-headline">Ingredientes con Stock Bajo</CardTitle>
+            <CardDescription>Encuentra proveedores alternativos para ingredientes que se están agotando.</CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Ingredient</TableHead>
-                  <TableHead>Quantity</TableHead>
-                  <TableHead>Action</TableHead>
+                  <TableHead>Ingrediente</TableHead>
+                  <TableHead>Cantidad</TableHead>
+                  <TableHead>Acción</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -112,7 +112,7 @@ export default function SuppliersPage() {
                         {loadingIngredient === item.name ? (
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                         ) : null}
-                        Find Alternates
+                        Buscar Alternativas
                       </Button>
                     </TableCell>
                   </TableRow>
@@ -126,20 +126,20 @@ export default function SuppliersPage() {
       <AlertDialog open={!!vendorSuggestion} onOpenChange={() => setVendorSuggestion(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle className="font-headline">Alternate Vendor Found!</AlertDialogTitle>
+            <AlertDialogTitle className="font-headline">¡Proveedor Alternativo Encontrado!</AlertDialogTitle>
             <AlertDialogDescription>
-              Our AI has found a potential alternate vendor for you.
+              Nuestra IA ha encontrado un posible proveedor alternativo para ti.
             </AlertDialogDescription>
           </AlertDialogHeader>
           {vendorSuggestion && (
             <div className="text-sm space-y-2">
-              <p><strong className="font-medium">Vendor:</strong> {vendorSuggestion.vendorName}</p>
-              <p><strong className="font-medium">Contact:</strong> {vendorSuggestion.vendorContact}</p>
-              <p><strong className="font-medium">Website:</strong> <a href={vendorSuggestion.vendorWebsite} target="_blank" rel="noopener noreferrer" className="text-primary underline">{vendorSuggestion.vendorWebsite}</a></p>
+              <p><strong className="font-medium">Proveedor:</strong> {vendorSuggestion.vendorName}</p>
+              <p><strong className="font-medium">Contacto:</strong> {vendorSuggestion.vendorContact}</p>
+              <p><strong className="font-medium">Sitio Web:</strong> <a href={vendorSuggestion.vendorWebsite} target="_blank" rel="noopener noreferrer" className="text-primary underline">{vendorSuggestion.vendorWebsite}</a></p>
             </div>
           )}
           <AlertDialogFooter>
-            <AlertDialogAction onClick={() => setVendorSuggestion(null)}>Great!</AlertDialogAction>
+            <AlertDialogAction onClick={() => setVendorSuggestion(null)}>¡Genial!</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

@@ -12,27 +12,27 @@ import { sales } from '@/lib/data';
 import { format } from 'date-fns';
 
 const statusVariantMap: { [key: string]: 'default' | 'secondary' | 'destructive' } = {
-  'Paid': 'default',
-  'Pending': 'secondary',
-  'Overdue': 'destructive',
+  'Pagado': 'default',
+  'Pendiente': 'secondary',
+  'Vencido': 'destructive',
 };
 
 export default function SalesPage() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-headline">Sales Orders</CardTitle>
-        <CardDescription>Manage and track all customer sales orders.</CardDescription>
+        <CardTitle className="font-headline">Órdenes de Venta</CardTitle>
+        <CardDescription>Gestiona y realiza un seguimiento de todas las órdenes de venta de clientes.</CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Order ID</TableHead>
-              <TableHead>Customer</TableHead>
-              <TableHead>Date</TableHead>
+              <TableHead>ID de Orden</TableHead>
+              <TableHead>Cliente</TableHead>
+              <TableHead>Fecha</TableHead>
               <TableHead className="text-right">Total</TableHead>
-              <TableHead>Status</TableHead>
+              <TableHead>Estado</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -40,7 +40,7 @@ export default function SalesPage() {
               <TableRow key={sale.id}>
                 <TableCell className="font-medium">{sale.id.toUpperCase()}</TableCell>
                 <TableCell>{sale.customer}</TableCell>
-                <TableCell>{format(sale.date, 'MMM d, yyyy')}</TableCell>
+                <TableCell>{format(sale.date, 'd MMM, yyyy')}</TableCell>
                 <TableCell className="text-right">
                   ${sale.total.toFixed(2)}
                 </TableCell>

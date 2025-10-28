@@ -23,10 +23,10 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const salesData = [
-  { name: 'Jan', sales: 4000 },
+  { name: 'Ene', sales: 4000 },
   { name: 'Feb', sales: 3000 },
   { name: 'Mar', sales: 5000 },
-  { name: 'Apr', sales: 4500 },
+  { name: 'Abr', sales: 4500 },
   { name: 'May', sales: 6000 },
   { name: 'Jun', sales: 5500 },
 ];
@@ -48,10 +48,10 @@ export default function DashboardPage() {
         )}
         <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-start p-6 md:p-12">
           <h1 className="font-headline text-3xl md:text-5xl font-bold text-white">
-            Welcome, Brewmaster
+            Bienvenido, Maestro Cervecero
           </h1>
           <p className="text-lg text-white/80 mt-2">
-            Here&apos;s a snapshot of your brewery&apos;s performance.
+            Aquí tienes un resumen del rendimiento de tu cervecería.
           </p>
         </div>
       </div>
@@ -59,52 +59,52 @@ export default function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
+            <CardTitle className="text-sm font-medium">Ingresos Totales</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$45,231.89</div>
             <p className="text-xs text-muted-foreground flex items-center">
               <ArrowUpRight className="h-4 w-4 text-green-500 mr-1" />
-              +20.1% from last month
+              +20.1% desde el mes pasado
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Low Stock Items</CardTitle>
+            <CardTitle className="text-sm font-medium">Artículos con Stock Bajo</CardTitle>
             <Boxes className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">3</div>
             <p className="text-xs text-muted-foreground flex items-center">
               <ArrowUpRight className="h-4 w-4 text-yellow-500 mr-1" />
-              +2 since last week
+              +2 desde la semana pasada
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Active Production Batches
+              Lotes de Producción Activos
             </CardTitle>
             <Factory className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">+3</div>
-            <p className="text-xs text-muted-foreground">Currently in production</p>
+            <p className="text-xs text-muted-foreground">Actualmente en producción</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Slow Moving Items</CardTitle>
+            <CardTitle className="text-sm font-medium">Artículos de Baja Rotación</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">1</div>
             <p className="text-xs text-muted-foreground flex items-center">
               <ArrowDownRight className="h-4 w-4 text-red-500 mr-1" />
-              -5% sales this month
+              -5% ventas este mes
             </p>
           </CardContent>
         </Card>
@@ -113,7 +113,7 @@ export default function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
         <Card className="lg:col-span-4">
           <CardHeader>
-            <CardTitle className="font-headline">Sales Overview</CardTitle>
+            <CardTitle className="font-headline">Resumen de Ventas</CardTitle>
           </CardHeader>
           <CardContent className="pl-2">
             <ResponsiveContainer width="100%" height={350}>
@@ -128,23 +128,23 @@ export default function DashboardPage() {
                   }}
                 />
                 <Legend />
-                <Bar dataKey="sales" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="sales" name="Ventas" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
         <Card className="lg:col-span-3">
           <CardHeader>
-            <CardTitle className="font-headline">Quick Actions</CardTitle>
+            <CardTitle className="font-headline">Acciones Rápidas</CardTitle>
             <CardDescription>
-              Start a new task with a single click.
+              Inicia una nueva tarea con un solo clic.
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
-            <Button>Add New Recipe</Button>
-            <Button variant="secondary">Start Production Batch</Button>
-            <Button variant="outline">Enter New Sale</Button>
-            <Button variant="destructive">Report Spoilage</Button>
+            <Button>Añadir Nueva Receta</Button>
+            <Button variant="secondary">Iniciar Lote de Producción</Button>
+            <Button variant="outline">Registrar Nueva Venta</Button>
+            <Button variant="destructive">Reportar Deterioro</Button>
           </CardContent>
         </Card>
       </div>

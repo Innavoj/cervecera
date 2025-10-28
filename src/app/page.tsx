@@ -24,21 +24,21 @@ export default function LoginPage() {
             <Sprout className="h-10 w-10 text-primary" />
           </div>
           <CardTitle className="text-3xl font-headline">BrewCentral</CardTitle>
-          <CardDescription>Sign in to manage your brewery</CardDescription>
+          <CardDescription>Inicia sesión para administrar tu cervecería</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="manager@brewery.com" required />
+              <Label htmlFor="email">Correo Electrónico</Label>
+              <Input id="email" type="email" placeholder="gerente@cerveceria.com" required />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Contraseña</Label>
               <Input id="password" type="password" required />
             </div>
           </div>
           <Button onClick={handleLogin} className="w-full mt-6">
-            Sign In
+            Iniciar Sesión
           </Button>
         </CardContent>
       </Card>

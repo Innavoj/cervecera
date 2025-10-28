@@ -12,13 +12,13 @@ import { Loader2, Wand2 } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 const reportTypes = [
-  'inventory_levels',
-  'production_efficiency',
-  'sales_trends',
-  'financial_performance',
-  'best_selling_items',
-  'slow_moving_items',
-  'ingredients_at_risk_of_spoilage',
+  { value: 'inventory_levels', label: 'Niveles de Inventario' },
+  { value: 'production_efficiency', label: 'Eficiencia de Producción' },
+  { value: 'sales_trends', label: 'Tendencias de Ventas' },
+  { value: 'financial_performance', label: 'Rendimiento Financiero' },
+  { value: 'best_selling_items', label: 'Artículos más Vendidos' },
+  { value: 'slow_moving_items', label: 'Artículos de Baja Rotación' },
+  { value: 'ingredients_at_risk_of_spoilage', label: 'Ingredientes en Riesgo de Deterioro' },
 ];
 
 const sampleChartData = [
@@ -39,8 +39,8 @@ export default function ReportsPage() {
     if (!reportType) {
       toast({
         variant: "destructive",
-        title: "Select a report type",
-        description: "Please choose a type of report to generate.",
+        title: "Selecciona un tipo de informe",
+        description: "Por favor, elige un tipo de informe para generar.",
       });
       return;
     }
@@ -52,11 +52,11 @@ export default function ReportsPage() {
       const result = await generateInsightfulReport({ reportType });
       setReport(result);
     } catch (error) {
-      console.error("Error generating report:", error);
+      console.error("Error al generar el informe:", error);
       toast({
         variant: "destructive",
         title: "Error",
-        description: "Could not generate the report at this time.",
+        description: "No se pudo generar el informe en este momento.",
       });
     } finally {
       setIsLoading(false);
@@ -68,20 +68,20 @@ export default function ReportsPage() {
       <div className="md:col-span-1 space-y-6">
         <Card>
           <CardHeader>
-            <CardTitle className="font-headline">Generate Report</CardTitle>
-            <CardDescription>Use AI to generate insightful business reports.</CardDescription>
+            <CardTitle className="font-headline">Generar Informe</CardTitle>
+            <CardDescription>Usa IA para generar informes de negocio detallados.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="report-type">Report Type</Label>
+              <Label htmlFor="report-type">Tipo de Informe</Label>
               <Select onValueChange={setReportType} value={reportType}>
                 <SelectTrigger id="report-type">
-                  <SelectValue placeholder="Select a report..." />
+                  <SelectValue placeholder="Selecciona un informe..." />
                 </SelectTrigger>
                 <SelectContent>
                   {reportTypes.map((type) => (
-                    <SelectItem key={type} value={type}>
-                      {type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                    <SelectItem key={type.value} value={type.value}>
+                      {type.label}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -93,7 +93,7 @@ export default function ReportsPage() {
               ) : (
                 <Wand2 className="mr-2 h-4 w-4" />
               )}
-              Generate with AI
+              Generar con IA
             </Button>
           </CardContent>
         </Card>
@@ -102,19 +102,19 @@ export default function ReportsPage() {
       <div className="md:col-span-2">
         <Card className="min-h-[500px]">
           <CardHeader>
-            <CardTitle className="font-headline">{report?.reportTitle || "Your Report"}</CardTitle>
+            <CardTitle className="font-headline">{report?.reportTitle || "Tu Informe"}</CardTitle>
           </CardHeader>
           <CardContent>
             {isLoading && (
               <div className="flex flex-col items-center justify-center h-96">
                 <Loader2 className="h-12 w-12 animate-spin text-primary" />
-                <p className="mt-4 text-muted-foreground">Generating your report...</p>
+                <p className="mt-4 text-muted-foreground">Generando tu informe...</p>
               </div>
             )}
             {!isLoading && !report && (
               <div className="flex flex-col items-center justify-center h-96 text-center">
                 <Wand2 className="h-12 w-12 text-muted-foreground" />
-                <p className="mt-4 text-muted-foreground">Select a report type and click generate to see your report.</p>
+                <p className="mt-4 text-muted-foreground">Selecciona un tipo de informe y haz clic en generar para ver tu informe.</p>
               </div>
             )}
             {report && (
@@ -122,7 +122,7 @@ export default function ReportsPage() {
                 <Textarea readOnly value={report.reportContent} className="h-48 bg-background" />
                 {report.visualization?.shouldVisualize && (
                   <div>
-                    <h3 className="text-lg font-semibold mb-2">Visualization: {report.visualization.visualizationType}</h3>
+                    <h3 className="text-lg font-semibold mb-2">Visualización: {report.visualization.visualizationType}</h3>
                     <ResponsiveContainer width="100%" height={300}>
                       <BarChart data={sampleChartData}>
                         <CartesianGrid strokeDasharray="3 3" />
@@ -135,7 +135,7 @@ export default function ReportsPage() {
                           }}
                         />
                         <Legend />
-                        <Bar dataKey="sales" fill="hsl(var(--primary))" name="Sample Sales" />
+                        <Bar dataKey="sales" fill="hsl(var(--primary))" name="Ventas de Muestra" />
                       </BarChart>
                     </ResponsiveContainer>
                   </div>

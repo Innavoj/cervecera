@@ -1,7 +1,7 @@
 export type InventoryItem = {
   id: string;
   name: string;
-  category: 'Raw Material' | 'Finished Product' | 'Cleaning Supply';
+  category: 'Materia Prima' | 'Producto Terminado' | 'Suministro de Limpieza';
   quantity: number;
   unit: string;
   reorderLevel: number;
@@ -26,7 +26,7 @@ export type Recipe = {
 export type ProductionBatch = {
   id: string;
   recipeName: string;
-  status: 'Planning' | 'Fermenting' | 'Conditioning' | 'Bottled';
+  status: 'Planificación' | 'Fermentando' | 'Acondicionando' | 'Embotellado';
   startDate: Date;
   idealBottlingDate: Date;
   expirationDate: Date;
@@ -37,7 +37,7 @@ export type Sale = {
   customer: string;
   date: Date;
   total: number;
-  status: 'Paid' | 'Pending' | 'Overdue';
+  status: 'Pagado' | 'Pendiente' | 'Vencido';
 };
 
 export type Supplier = {

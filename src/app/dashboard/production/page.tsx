@@ -12,29 +12,29 @@ import { productionBatches } from '@/lib/data';
 import { format } from 'date-fns';
 
 const statusVariantMap: { [key: string]: 'default' | 'secondary' | 'outline' } = {
-  'Fermenting': 'secondary',
-  'Conditioning': 'default',
-  'Bottled': 'outline',
-  'Planning': 'default',
+  'Fermentando': 'secondary',
+  'Acondicionando': 'default',
+  'Embotellado': 'outline',
+  'Planificación': 'default',
 };
 
 export default function ProductionPage() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-headline">Production Batches</CardTitle>
-        <CardDescription>Track all ongoing and completed production batches.</CardDescription>
+        <CardTitle className="font-headline">Lotes de Producción</CardTitle>
+        <CardDescription>Realiza un seguimiento de todos los lotes de producción en curso y completados.</CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Batch ID</TableHead>
-              <TableHead>Recipe</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Start Date</TableHead>
-              <TableHead>Ideal Bottling Date</TableHead>
-              <TableHead>Expiration Date</TableHead>
+              <TableHead>ID de Lote</TableHead>
+              <TableHead>Receta</TableHead>
+              <TableHead>Estado</TableHead>
+              <TableHead>Fecha de Inicio</TableHead>
+              <TableHead>Fecha Ideal de Embotellado</TableHead>
+              <TableHead>Fecha de Caducidad</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -45,9 +45,9 @@ export default function ProductionPage() {
                 <TableCell>
                   <Badge variant={statusVariantMap[batch.status] || 'default'}>{batch.status}</Badge>
                 </TableCell>
-                <TableCell>{format(batch.startDate, 'MMM d, yyyy')}</TableCell>
-                <TableCell>{format(batch.idealBottlingDate, 'MMM d, yyyy')}</TableCell>
-                <TableCell>{format(batch.expirationDate, 'MMM d, yyyy')}</TableCell>
+                <TableCell>{format(batch.startDate, 'd MMM, yyyy')}</TableCell>
+                <TableCell>{format(batch.idealBottlingDate, 'd MMM, yyyy')}</TableCell>
+                <TableCell>{format(batch.expirationDate, 'd MMM, yyyy')}</TableCell>
               </TableRow>
             ))}
           </TableBody>

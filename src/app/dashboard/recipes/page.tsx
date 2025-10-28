@@ -32,7 +32,7 @@ export default function RecipesPage() {
                 <AccordionItem value="ingredients">
                   <AccordionTrigger>
                     <div className="flex items-center gap-2">
-                        Ingredients
+                        Ingredientes
                         {hasLowStock && <AlertTriangle className="w-4 h-4 text-yellow-500" />}
                     </div>
                   </AccordionTrigger>
@@ -51,7 +51,7 @@ export default function RecipesPage() {
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="instructions">
-                  <AccordionTrigger>Instructions</AccordionTrigger>
+                  <AccordionTrigger>Instrucciones</AccordionTrigger>
                   <AccordionContent>
                     <ol className="list-decimal pl-5 space-y-2 text-sm">
                       {recipe.instructions.map((step, index) => (

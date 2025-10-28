@@ -13,30 +13,30 @@ import type { InventoryItem } from '@/lib/types';
 
 function getStockStatus(item: InventoryItem): { text: string; variant: 'default' | 'secondary' | 'destructive' } {
   if (item.quantity <= 0) {
-    return { text: 'Out of Stock', variant: 'destructive' };
+    return { text: 'Agotado', variant: 'destructive' };
   }
   if (item.quantity < item.reorderLevel) {
-    return { text: 'Low Stock', variant: 'secondary' };
+    return { text: 'Stock Bajo', variant: 'secondary' };
   }
-  return { text: 'In Stock', variant: 'default' };
+  return { text: 'En Stock', variant: 'default' };
 }
 
 export default function InventoryPage() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-headline">Inventory Status</CardTitle>
-        <CardDescription>A complete overview of your stock levels.</CardDescription>
+        <CardTitle className="font-headline">Estado de Inventario</CardTitle>
+        <CardDescription>Un resumen completo de tus niveles de stock.</CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Item</TableHead>
-              <TableHead>Category</TableHead>
-              <TableHead className="text-right">Quantity</TableHead>
-              <TableHead className="text-right">Reorder Level</TableHead>
-              <TableHead>Status</TableHead>
+              <TableHead>Artículo</TableHead>
+              <TableHead>Categoría</TableHead>
+              <TableHead className="text-right">Cantidad</TableHead>
+              <TableHead className="text-right">Nivel de Reorden</TableHead>
+              <TableHead>Estado</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
