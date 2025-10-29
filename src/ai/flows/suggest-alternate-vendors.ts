@@ -46,9 +46,9 @@ const findAlternateVendor = ai.defineTool(
     // In a real application, this would use a search engine or web scraping library.
     console.log(`Searching the web for alternate vendors for ${input.ingredientName}`);
     return {
-      vendorName: 'Example Vendor',
-      vendorContact: 'contact@example.com',
-      vendorWebsite: 'https://example.com',
+      vendorName: 'Proveedor de Ejemplo',
+      vendorContact: 'contacto@proveedor-ejemplo.com',
+      vendorWebsite: 'https://proveedor-ejemplo.com',
     };
   }
 );
@@ -58,12 +58,12 @@ const prompt = ai.definePrompt({
   tools: [findAlternateVendor],
   input: {schema: SuggestAlternateVendorsInputSchema},
   output: {schema: SuggestAlternateVendorsOutputSchema},
-  prompt: `You are a brewery assistant tasked with finding alternate vendors for ingredients that are running short.
+  prompt: `Eres un asistente de cervecería encargado de encontrar proveedores alternativos para los ingredientes que se están agotando.
 
-  The brewery is running short on the following ingredient: {{{ingredientName}}}.
+  La cervecería se está quedando sin el siguiente ingrediente: {{{ingredientName}}}.
 
-  Use the findAlternateVendor tool to search for an alternate vendor for this ingredient.
-  Return the vendor name, contact, and website.
+  Usa la herramienta findAlternateVendor para buscar un proveedor alternativo para este ingrediente.
+  Devuelve el nombre, contacto y sitio web del proveedor.
   `,
 });
 

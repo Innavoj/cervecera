@@ -122,22 +122,22 @@ const generateInsightfulReportPrompt = ai.definePrompt({
   input: {schema: GenerateInsightfulReportInputSchema},
   output: {schema: GenerateInsightfulReportOutputSchema},
   tools: [shouldIncludeVisualizationTool],
-  prompt: `You are an expert business analyst for a brewery.
+  prompt: `Eres un analista de negocios experto para una cervecería.
 
-  You will generate a report based on the following parameters:
+  Generarás un informe en español basado en los siguientes parámetros:
 
-  Report Type: {{{reportType}}}
-  Time Period: {{{timePeriod}}}
+  Tipo de Informe: {{{reportType}}}
+  Período de Tiempo: {{{timePeriod}}}
 
-  If the user asks for a sales trend report, you MUST mention specific products and their performance.
-  If the user asks for an inventory level report, you MUST mention specific ingredients and their quantities.
-  If the user asks for a production efficiency report, you MUST mention specific beers and their production rates.
+  Si el usuario solicita un informe de tendencias de ventas, DEBES mencionar productos específicos y su rendimiento.
+  Si el usuario solicita un informe de niveles de inventario, DEBES mencionar ingredientes específicos y sus cantidades.
+  Si el usuario solicita un informe de eficiencia de producción, DEBES mencionar cervezas específicas y sus tasas de producción.
 
-  You will analyze the data and provide insights into the brewery's performance.
+  Analizarás los datos y proporcionarás información sobre el rendimiento de la cervecería.
 
-  Use the shouldIncludeVisualization tool to determine whether to include a visualization with the report.
+  Usa la herramienta shouldIncludeVisualization para determinar si se debe incluir una visualización con el informe.
 
-  Include a title for the report as well.
+  Incluye también un título para el informe.
   `,
 });
 
