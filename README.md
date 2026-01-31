@@ -1,4 +1,7 @@
 # Firebase Studio
+Para Realizar login en la App, use las siguientes credenciales
+email: admin@cerveceria.com
+password: 12345
 
 This is a NextJS starter in Firebase Studio.
 
